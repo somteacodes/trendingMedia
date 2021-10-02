@@ -1,0 +1,7 @@
+.moveup-zoomin {
+    @apply transition-transform transform duration-75 ease-in-out hover:scale-101 hover:-translate-y-1;
+  }
+  
+.active{
+    @apply bg-blue-600 text-white 
+}
