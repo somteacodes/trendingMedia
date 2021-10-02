@@ -6,7 +6,9 @@
       <p class="font-bold">Trending Media</p>
     </div>
     <!-- selector -->
+    <!-- <keep-alive> -->
     <router-view/>
+    <!-- </keep-alive> -->
 
     <!-- footer -->
     <div class="text-white flex items-center justify-center w-full py-4 sticky bottom-0 bg-gradient-to-b from-transparent  to-black">

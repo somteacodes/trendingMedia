@@ -8,7 +8,11 @@
     <div class="grid grid-cols-2 gap-2 p-2">
 
         <!-- movie card item -->
-      <div class="bg-white h-72 relative cursor-pointer moveup-zoomin  sm:h-96" v-for="(item,key) in movieList" :key="key">
+      <div 
+   
+      class="bg-white h-72 relative cursor-pointer moveup-zoomin  sm:h-96" v-for="(item,key) in movieList" :key="key"
+         @click="goToMovie(item,key)"
+      >
         <img
         v-if="!item.backdrop_path"
           src="@/assets/images/placeholder1.jpg"
@@ -50,6 +54,7 @@
 
 <script>
 import axios from 'axios';
+import {mapMutations} from 'vuex'
 export default {
   props:["media","length"],
     data() {
@@ -63,12 +68,22 @@ export default {
     },
 
     methods:{
+      ...mapMutations({
+        setMedia:"setCurrentMedia",
+      }),
         async fetchMovies(){
-          //  const results = await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=b32d45b2c231eb8ff04cf2172ed01f85')
+        
                   const results = await axios.get(`https://api.themoviedb.org/3/trending/${this.media}/${this.length}?api_key=b32d45b2c231eb8ff04cf2172ed01f85`)
            console.log(results.data.results);
            this.movieList=results.data.results
-        }
+        },
+
+      async goToMovie(item,key){
+        console.log('movie id', item.id);
+        item.key=key+1
+        this.setMedia(item)
+        this.$router.push({path:'/movie-detail'})
+      }
     }
 }
 </script>

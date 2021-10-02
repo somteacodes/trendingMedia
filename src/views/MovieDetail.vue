@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <div class="w-full relative">
         <div class="flex justify-between   top-16 px-8 absolute  z-50">
            <img src="@/assets/images/arrow_back.svg" alt="" class="cursor-pointer py-4" @click="goBack">
@@ -56,7 +56,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script>
 import { mapGetters } from "vuex";
