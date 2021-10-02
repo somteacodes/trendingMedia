@@ -1,6 +1,8 @@
 <template>
-  <div>
-
+ <div class="relative">
+      <div class="h-screen w-full flex justify-center items-center absolute top-0" v-if="movieList.length<1">
+        <p>loading...</p>
+      </div>
 
       
     <div class="grid grid-cols-2 gap-2 p-2">
@@ -49,6 +51,7 @@
 <script>
 import axios from 'axios';
 export default {
+  props:["media","length"],
     data() {
         return {
             movieList:[],
@@ -61,7 +64,8 @@ export default {
 
     methods:{
         async fetchMovies(){
-           const results = await axios.get('https://api.themoviedb.org/3/trending/movie/week?api_key=b32d45b2c231eb8ff04cf2172ed01f85')
+          //  const results = await axios.get('https://api.themoviedb.org/3/trending/movie/day?api_key=b32d45b2c231eb8ff04cf2172ed01f85')
+                  const results = await axios.get(`https://api.themoviedb.org/3/trending/${this.media}/${this.length}?api_key=b32d45b2c231eb8ff04cf2172ed01f85`)
            console.log(results.data.results);
            this.movieList=results.data.results
         }
