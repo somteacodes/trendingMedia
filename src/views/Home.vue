@@ -1,15 +1,16 @@
 <template>
-  <div class="bg-gray-50 w-full h-screen">
-    <div class="px-2 shadow-lg py-4 flex justify-center mb-4">
+  <div class="bg-gray-200 w-full h-screen">
+    <div class="px-2 shadow-lg py-4 flex justify-center mb-4 bg-white">
+      <img src="@/assets/images/logo.svg" class="w-6 mr-6" alt="">
       <p class="font-bold">Trending Media</p>
     </div>
     <!-- selector -->
 
-    <TabGroup @change="changedTab">
-      <TabList class="flex justify-around bg-gray-200 mx-6 rounded-lg">
+    <TabGroup @change="changedTab" :defaultIndex="0">
+      <TabList class="flex justify-around bg-gray-300 mx-6 rounded-lg font-bold">
         <Tab v-slot="{ selected }" as="template">
           <div
-            class=" py-4 px-6 w-1/2  rounded-t-lg flex justify-center items-center   cursor-pointer hover:bg-blue-600 hover:text-white"
+            class=" py-4 px-6 w-1/2  text-blue-600 rounded-t-lg flex justify-center items-center   cursor-pointer hover:bg-blue-600 hover:text-white"
             :class="[selected ? 'active-l' : '']"
           >
             <p class="text-sm">Movies</p>
@@ -17,7 +18,7 @@
         </Tab>
         <Tab v-slot="{ selected }" as="template">
           <div
-            class=" py-4 px-6 w-1/2  rounded-t-lg flex justify-center items-center   cursor-pointer hover:bg-blue-600 hover:text-white"
+            class=" py-4 px-6 w-1/2  text-blue-600 rounded-t-lg flex justify-center items-center   cursor-pointer hover:bg-blue-600 hover:text-white"
             :class="[selected ? 'active-r' : '']"
           >
             <p class="text-sm">Series</p>
